@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/mipmap-hdpi_jatayu.jpg.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/mipmap-hdpi/jatayu.jpg"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/mipmap-mdpi_jatayu.jpg.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/mipmap-mdpi/jatayu.jpg"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/mipmap-xxxhdpi_jatayu.jpg.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/mipmap-xxxhdpi/jatayu.jpg"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/mipmap-xxhdpi_jatayu.jpg.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/mipmap-xxhdpi/jatayu.jpg"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/drawable_launch_background.xml.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/mipmap-xhdpi_jatayu.jpg.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/mipmap-xhdpi/jatayu.jpg"
+    },
+    {
+        "merged": "com.example.flutterassettracer.app-merged_res-34:/drawable-v21_launch_background.xml.flat",
+        "source": "com.example.flutterassettracer.app-main-27:/drawable-v21/launch_background.xml"
+    }
+]

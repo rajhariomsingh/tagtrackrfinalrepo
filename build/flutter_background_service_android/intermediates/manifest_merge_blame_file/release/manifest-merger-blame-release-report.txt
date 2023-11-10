@@ -1,0 +1,57 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="id.flutter.flutter_background_service" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="16"
+6-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="16" />
+7-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+9-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:4:5-76
+9-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:4:22-74
+10    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+10-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:5:5-80
+10-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:5:22-78
+11    <uses-permission android:name="android.permission.WAKE_LOCK" />
+11-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:6:22-65
+12
+13    <application>
+13-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:9:5-31:19
+14        <service
+14-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:10:9-14:15
+15            android:name="id.flutter.flutter_background_service.BackgroundService"
+15-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:13:13-46
+16            android:enabled="true"
+16-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:11:13-35
+17            android:exported="true" />
+17-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:12:13-36
+18
+19        <receiver
+19-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:16:9-20:15
+20            android:name="id.flutter.flutter_background_service.WatchdogReceiver"
+20-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:17:13-45
+21            android:enabled="true"
+21-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:18:13-35
+22            android:exported="true" />
+22-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:19:13-36
+23        <receiver
+23-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:22:9-29:20
+24            android:name="id.flutter.flutter_background_service.BootReceiver"
+24-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:22:19-47
+25            android:enabled="true"
+25-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:23:13-35
+26            android:exported="true" >
+26-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:24:13-36
+27            <intent-filter>
+27-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:26:13-28:29
+28                <action android:name="android.intent.action.BOOT_COMPLETED" />
+28-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:27:17-78
+28-->C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_background_service_android-1.0.2\android\src\main\AndroidManifest.xml:27:25-76
+29            </intent-filter>
+30        </receiver>
+31    </application>
+32
+33</manifest>

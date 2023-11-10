@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.transistorsoft.flutter.backgroundfetch.background_fetch-merged_res-21:/menu/example_menu.xml",
+        "source": "com.transistorsoft.flutter.backgroundfetch.background_fetch-core-1.7.0-1:/menu/example_menu.xml"
+    },
+    {
+        "merged": "com.transistorsoft.flutter.backgroundfetch.background_fetch-merged_res-21:/menu/example_menu2.xml",
+        "source": "com.transistorsoft.flutter.backgroundfetch.background_fetch-core-1.7.0-1:/menu/example_menu2.xml"
+    }
+]

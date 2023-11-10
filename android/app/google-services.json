@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "758579720933",
+    "project_id": "assettracer-5fbd9",
+    "storage_bucket": "assettracer-5fbd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758579720933:android:7133f76125add635815a0c",
+        "android_client_info": {
+          "package_name": "com.example.flutterassettracer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758579720933-62qeb3o259398esp1ecj032kbv93v73l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwy8carlN4Ngw5TvZWBNNtujeZWWfeQcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758579720933-62qeb3o259398esp1ecj032kbv93v73l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

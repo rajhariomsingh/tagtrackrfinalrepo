@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.transistorsoft.flutter.backgroundfetch.background_fetch-mergeReleaseResources-19:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\hario\\.gradle\\caches\\transforms-3\\eacc524cc2d6be73e061a802198eb2e2\\transformed\\appcompat-1.4.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.transistorsoft.flutter.backgroundfetch.background_fetch-merged_res-21:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\hario\\.gradle\\caches\\transforms-3\\eacc524cc2d6be73e061a802198eb2e2\\transformed\\appcompat-1.4.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

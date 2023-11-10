@@ -1,0 +1,12 @@
+io.flutter.plugins.nfcmanager.nfc_manager-jetified-annotation-experimental-1.1.0-0 C:\Users\hario\.gradle\caches\transforms-3\4da258d73ad21ac3b77ed1f360b8c1be\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.nfcmanager.nfc_manager-core-1.6.0-1 C:\Users\hario\.gradle\caches\transforms-3\dc66a9e887fa197d342a9170a296fb1f\transformed\core-1.6.0\res
+io.flutter.plugins.nfcmanager.nfc_manager-jetified-window-java-1.0.0-beta04-2 C:\Users\hario\.gradle\caches\transforms-3\f0b974b758349e9c54fcc6f9656f330a\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.nfcmanager.nfc_manager-jetified-window-1.0.0-beta04-3 C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.nfcmanager.nfc_manager-main-4 C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\nfc_manager-3.2.0\android\src\main\res
+io.flutter.plugins.nfcmanager.nfc_manager-release-5 C:\Users\hario\AppData\Local\Pub\Cache\hosted\pub.dev\nfc_manager-3.2.0\android\src\release\res
+io.flutter.plugins.nfcmanager.nfc_manager-pngs-6 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\generated\res\pngs\release
+io.flutter.plugins.nfcmanager.nfc_manager-resValues-7 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\generated\res\resValues\release
+io.flutter.plugins.nfcmanager.nfc_manager-rs-8 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\generated\res\rs\release
+io.flutter.plugins.nfcmanager.nfc_manager-mergeReleaseResources-9 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.nfcmanager.nfc_manager-mergeReleaseResources-10 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.nfcmanager.nfc_manager-merged_res-11 C:\Users\hario\OneDrive\Desktop\assetexperiment\build\nfc_manager\intermediates\merged_res\release

@@ -1,0 +1,674 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.flutterassettracer"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="33" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:3:5-66
+15-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:3:22-64
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:4:5-78
+16-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:4:22-76
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:5:5-80
+17-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:5:22-78
+18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+18-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:6:5-80
+18-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:6:22-77
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:7:5-81
+19-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:7:22-78
+20    <uses-permission android:name="android.permission.NFC" />
+20-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:8:5-62
+20-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:8:22-59
+21
+22    <uses-feature
+22-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:9:5-81
+23        android:name="android.hardware.nfc"
+23-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:9:19-54
+24        android:required="true" />
+24-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:9:55-78
+25
+26    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+26-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:10:5-85
+26-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:10:22-82
+27    <uses-permission android:name="android.permission.VIBRATE" />
+27-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:11:5-66
+27-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:11:22-63
+28    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+28-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:12:5-81
+28-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:12:22-78
+29    <uses-permission android:name="android.permission.WAKE_LOCK" />
+29-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:13:5-68
+29-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:13:22-65
+30    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+30-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:15:5-79
+30-->C:\Users\hario\OneDrive\Desktop\assetexperiment\android\app\src\main\AndroidManifest.xml:15:22-76
+31    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+31-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-81
+31-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-78
+32    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+32-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-79
+32-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-76
+33    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+33-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-77
+33-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-74
+34    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+34-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-77
+34-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-74
+35
+36    <permission
+36-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+37        android:name="com.example.flutterassettracer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+37-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+38        android:protectionLevel="signature" />
+38-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+39
+40    <uses-permission android:name="com.example.flutterassettracer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+40-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+40-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+41
+42    <application
+43        android:name="android.app.Application"
+44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+44-->[androidx.core:core:1.9.0] C:\Users\hario\.gradle\caches\transforms-3\beb05c6d16f102e70ef856749431a27b\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+45        android:debuggable="true"
+46        android:icon="@mipmap/jatayu"
+47        android:label="Jatayu" >
+48        <activity
+49            android:name="com.example.flutterassettracer.MainActivity"
+50            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+51            android:exported="true"
+52            android:hardwareAccelerated="true"
+53            android:launchMode="singleTop"
+54            android:theme="@style/LaunchTheme"
+55            android:windowSoftInputMode="adjustResize" >
+56
+57            <!--
+58                 Specifies an Android theme to apply to this Activity as soon as
+59                 the Android process has started. This theme is visible to the user
+60                 while the Flutter UI initializes. After that, this theme continues
+61                 to determine the Window background behind the Flutter UI.
+62            -->
+63            <meta-data
+64                android:name="io.flutter.embedding.android.NormalTheme"
+65                android:resource="@style/NormalTheme" />
+66
+67            <intent-filter>
+68                <action android:name="android.intent.action.MAIN" />
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+71            </intent-filter>
+72        </activity>
+73
+74        <!--
+75            Don't delete the meta-data below.
+76            This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+77        -->
+78        <meta-data
+79            android:name="flutterEmbedding"
+80            android:value="2" />
+81
+82        <service
+82-->[:firebase_database] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+83            android:name="com.google.firebase.components.ComponentDiscoveryService"
+83-->[:firebase_database] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+84            android:directBootAware="true"
+84-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:34:13-43
+85            android:exported="false" >
+85-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:68:13-37
+86            <meta-data
+86-->[:firebase_database] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+87                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+87-->[:firebase_database] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-127
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[:firebase_database] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_database\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+89            <meta-data
+89-->[:cloud_firestore] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+90                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+90-->[:cloud_firestore] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-134
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[:cloud_firestore] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+92            <meta-data
+92-->[:firebase_auth] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+93                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+93-->[:firebase_auth] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[:firebase_auth] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+95            <meta-data
+95-->[:firebase_storage] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+96                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+96-->[:firebase_storage] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-126
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[:firebase_storage] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+98            <meta-data
+98-->[:firebase_core] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+99                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+99-->[:firebase_core] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[:firebase_core] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+101            <meta-data
+101-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:69:13-71:85
+102                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+102-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:70:17-109
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:71:17-82
+104            <meta-data
+104-->[com.google.firebase:firebase-database:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\7f873478ff9e23a27120bf2993d4ec05\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:31:13-33:85
+105                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+105-->[com.google.firebase:firebase-database:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\7f873478ff9e23a27120bf2993d4ec05\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:32:17-109
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[com.google.firebase:firebase-database:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\7f873478ff9e23a27120bf2993d4ec05\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:33:17-82
+107            <meta-data
+107-->[com.google.firebase:firebase-firestore:24.4.5] C:\Users\hario\.gradle\caches\transforms-3\a115e100c4c167b1528a692cb860fd13\transformed\jetified-firebase-firestore-24.4.5\AndroidManifest.xml:19:13-21:85
+108                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+108-->[com.google.firebase:firebase-firestore:24.4.5] C:\Users\hario\.gradle\caches\transforms-3\a115e100c4c167b1528a692cb860fd13\transformed\jetified-firebase-firestore-24.4.5\AndroidManifest.xml:20:17-111
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[com.google.firebase:firebase-firestore:24.4.5] C:\Users\hario\.gradle\caches\transforms-3\a115e100c4c167b1528a692cb860fd13\transformed\jetified-firebase-firestore-24.4.5\AndroidManifest.xml:21:17-82
+110            <meta-data
+110-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\139df8d83251df4a30183b3bdabb4eec\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:32:13-34:85
+111                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+111-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\139df8d83251df4a30183b3bdabb4eec\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:33:17-107
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\hario\.gradle\caches\transforms-3\139df8d83251df4a30183b3bdabb4eec\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:34:17-82
+113        </service>
+114
+115        <provider
+115-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+116            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+116-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+117            android:authorities="com.example.flutterassettracer.flutter.image_provider"
+117-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+118            android:exported="false"
+118-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+119            android:grantUriPermissions="true" >
+119-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+120            <meta-data
+120-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+121                android:name="android.support.FILE_PROVIDER_PATHS"
+121-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+122                android:resource="@xml/flutter_image_picker_file_paths" />
+122-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+123        </provider>
+124
+125        <receiver
+125-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-18:40
+126            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
+126-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-91
+127            android:exported="false" />
+127-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+128        <receiver
+128-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-21:40
+129            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+129-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-97
+130            android:exported="false" />
+130-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-37
+131        <receiver
+131-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-31:20
+132            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+132-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-101
+133            android:exported="false" >
+133-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+134            <intent-filter>
+134-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-30:29
+135                <action android:name="android.intent.action.BOOT_COMPLETED" />
+135-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+135-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+136                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+136-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-84
+136-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-81
+137                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+137-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:17-82
+137-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:28:25-79
+138                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+138-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:17-82
+138-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:29:25-79
+139            </intent-filter>
+140        </receiver>
+141
+142        <service
+142-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-17:39
+143            android:name="id.flutter.flutter_background_service.BackgroundService"
+143-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-83
+144            android:enabled="true"
+144-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-35
+145            android:exported="true" />
+145-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-36
+146
+147        <receiver
+147-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-22:39
+148            android:name="id.flutter.flutter_background_service.WatchdogReceiver"
+148-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-82
+149            android:enabled="true"
+149-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-35
+150            android:exported="true" />
+150-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-36
+151        <receiver
+151-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:9-30:20
+152            android:name="id.flutter.flutter_background_service.BootReceiver"
+152-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-78
+153            android:enabled="true"
+153-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-35
+154            android:exported="true" >
+154-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-36
+155            <intent-filter>
+155-->[:flutter_background_service_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_background_service_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-29:29
+156                <action android:name="android.intent.action.BOOT_COMPLETED" />
+156-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+156-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+157            </intent-filter>
+158        </receiver>
+159
+160        <provider
+160-->[:share] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+161            android:name="io.flutter.plugins.share.ShareFileProvider"
+161-->[:share] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-70
+162            android:authorities="com.example.flutterassettracer.flutter.share_provider"
+162-->[:share] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+163            android:exported="false"
+163-->[:share] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+164            android:grantUriPermissions="true" >
+164-->[:share] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\share\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+165            <meta-data
+165-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+166                android:name="android.support.FILE_PROVIDER_PATHS"
+166-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+167                android:resource="@xml/flutter_share_file_paths" />
+167-->[:image_picker_android] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+168        </provider>
+169
+170        <activity
+170-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:29:9-46:20
+171            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+171-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:30:13-80
+172            android:excludeFromRecents="true"
+172-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:31:13-46
+173            android:exported="true"
+173-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:32:13-36
+174            android:launchMode="singleTask"
+174-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:33:13-44
+175            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+175-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:34:13-72
+176            <intent-filter>
+176-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:35:13-45:29
+177                <action android:name="android.intent.action.VIEW" />
+177-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:36:17-69
+177-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:36:25-66
+178
+179                <category android:name="android.intent.category.DEFAULT" />
+179-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:38:17-76
+179-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:38:27-73
+180                <category android:name="android.intent.category.BROWSABLE" />
+180-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:39:17-78
+180-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:39:27-75
+181
+182                <data
+182-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:41:17-44:51
+183                    android:host="firebase.auth"
+183-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:42:21-49
+184                    android:path="/"
+184-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:43:21-37
+185                    android:scheme="genericidp" />
+185-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:44:21-48
+186            </intent-filter>
+187        </activity>
+188        <activity
+188-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:47:9-64:20
+189            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+189-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:48:13-79
+190            android:excludeFromRecents="true"
+190-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:49:13-46
+191            android:exported="true"
+191-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:50:13-36
+192            android:launchMode="singleTask"
+192-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:51:13-44
+193            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+193-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:52:13-72
+194            <intent-filter>
+194-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:53:13-63:29
+195                <action android:name="android.intent.action.VIEW" />
+195-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:36:17-69
+195-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:36:25-66
+196
+197                <category android:name="android.intent.category.DEFAULT" />
+197-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:38:17-76
+197-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:38:27-73
+198                <category android:name="android.intent.category.BROWSABLE" />
+198-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:39:17-78
+198-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:39:27-75
+199
+200                <data
+200-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:41:17-44:51
+201                    android:host="firebase.auth"
+201-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:42:21-49
+202                    android:path="/"
+202-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:43:21-37
+203                    android:scheme="recaptcha" />
+203-->[com.google.firebase:firebase-auth:21.2.0] C:\Users\hario\.gradle\caches\transforms-3\f8d6a94ce4c7aa16d03947263c93a1b7\transformed\jetified-firebase-auth-21.2.0\AndroidManifest.xml:44:21-48
+204            </intent-filter>
+205        </activity>
+206        <activity
+206-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:23:9-27:75
+207            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+207-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:24:13-93
+208            android:excludeFromRecents="true"
+208-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:25:13-46
+209            android:exported="false"
+209-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:26:13-37
+210            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+210-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:27:13-72
+211        <!--
+212            Service handling Google Sign-In user revocation. For apps that do not integrate with
+213            Google Sign-In, this service will never be started.
+214        -->
+215        <service
+215-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:33:9-37:51
+216            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+216-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:34:13-89
+217            android:exported="true"
+217-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:35:13-36
+218            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+218-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:36:13-107
+219            android:visibleToInstantApps="true" />
+219-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\hario\.gradle\caches\transforms-3\64127e632a011292a3363bd032ddebcc\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:37:13-48
+220
+221        <provider
+221-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:25:9-30:39
+222            android:name="com.google.firebase.provider.FirebaseInitProvider"
+222-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:26:13-77
+223            android:authorities="com.example.flutterassettracer.firebaseinitprovider"
+223-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:27:13-72
+224            android:directBootAware="true"
+224-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:28:13-43
+225            android:exported="false"
+225-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:29:13-37
+226            android:initOrder="100" />
+226-->[com.google.firebase:firebase-common:20.3.2] C:\Users\hario\.gradle\caches\transforms-3\d0329f9e423b96e827a6bc0ab4cc7266\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:30:13-36
+227
+228        <activity
+228-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\hario\.gradle\caches\transforms-3\408206dd9b8dab6a2466e53f1796208b\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+229            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+229-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\hario\.gradle\caches\transforms-3\408206dd9b8dab6a2466e53f1796208b\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+230            android:exported="false"
+230-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\hario\.gradle\caches\transforms-3\408206dd9b8dab6a2466e53f1796208b\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+231            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+231-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\hario\.gradle\caches\transforms-3\408206dd9b8dab6a2466e53f1796208b\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+232
+233        <meta-data
+233-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\hario\.gradle\caches\transforms-3\ff69d175c49cfa9394e8ca832c98affc\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+234            android:name="com.google.android.gms.version"
+234-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\hario\.gradle\caches\transforms-3\ff69d175c49cfa9394e8ca832c98affc\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+235            android:value="@integer/google_play_services_version" />
+235-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\hario\.gradle\caches\transforms-3\ff69d175c49cfa9394e8ca832c98affc\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+236
+237        <uses-library
+237-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+238            android:name="androidx.window.extensions"
+238-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+239            android:required="false" />
+239-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+240        <uses-library
+240-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+241            android:name="androidx.window.sidecar"
+241-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+242            android:required="false" />
+242-->[androidx.window:window:1.0.0-beta04] C:\Users\hario\.gradle\caches\transforms-3\fd5f419e863560aa62f941d72f6221aa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+243
+244        <provider
+244-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:31:9-39:20
+245            android:name="androidx.startup.InitializationProvider"
+245-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:32:13-67
+246            android:authorities="com.example.flutterassettracer.androidx-startup"
+246-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:33:13-68
+247            android:exported="false" >
+247-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:34:13-37
+248            <meta-data
+248-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:36:13-38:52
+249                android:name="androidx.work.WorkManagerInitializer"
+249-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:37:17-68
+250                android:value="androidx.startup" />
+250-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:38:17-49
+251            <meta-data
+251-->[androidx.emoji2:emoji2:1.0.0] C:\Users\hario\.gradle\caches\transforms-3\47967fdfc8a1c40c6373eaa85d9b207c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+252                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+252-->[androidx.emoji2:emoji2:1.0.0] C:\Users\hario\.gradle\caches\transforms-3\47967fdfc8a1c40c6373eaa85d9b207c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+253                android:value="androidx.startup" />
+253-->[androidx.emoji2:emoji2:1.0.0] C:\Users\hario\.gradle\caches\transforms-3\47967fdfc8a1c40c6373eaa85d9b207c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+254            <meta-data
+254-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\hario\.gradle\caches\transforms-3\3b2c648ced8ef439350a279701c72b52\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+255                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+255-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\hario\.gradle\caches\transforms-3\3b2c648ced8ef439350a279701c72b52\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+256                android:value="androidx.startup" />
+256-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\hario\.gradle\caches\transforms-3\3b2c648ced8ef439350a279701c72b52\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+257        </provider>
+258
+259        <service
+259-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:41:9-46:35
+260            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+260-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:42:13-88
+261            android:directBootAware="false"
+261-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:43:13-44
+262            android:enabled="@bool/enable_system_alarm_service_default"
+262-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:44:13-72
+263            android:exported="false" />
+263-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:45:13-37
+264        <service
+264-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:47:9-53:35
+265            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+265-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:48:13-84
+266            android:directBootAware="false"
+266-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:49:13-44
+267            android:enabled="@bool/enable_system_job_service_default"
+267-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:50:13-70
+268            android:exported="true"
+268-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:51:13-36
+269            android:permission="android.permission.BIND_JOB_SERVICE" />
+269-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:52:13-69
+270        <service
+270-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:54:9-59:35
+271            android:name="androidx.work.impl.foreground.SystemForegroundService"
+271-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:55:13-81
+272            android:directBootAware="false"
+272-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:56:13-44
+273            android:enabled="@bool/enable_system_foreground_service_default"
+273-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:57:13-77
+274            android:exported="false" />
+274-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:58:13-37
+275
+276        <receiver
+276-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:61:9-66:35
+277            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+277-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:62:13-88
+278            android:directBootAware="false"
+278-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:63:13-44
+279            android:enabled="true"
+279-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:64:13-35
+280            android:exported="false" />
+280-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:65:13-37
+281        <receiver
+281-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:67:9-77:20
+282            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+282-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:68:13-106
+283            android:directBootAware="false"
+283-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:69:13-44
+284            android:enabled="false"
+284-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:70:13-36
+285            android:exported="false" >
+285-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:71:13-37
+286            <intent-filter>
+286-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:73:13-76:29
+287                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+287-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:74:17-87
+287-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:74:25-84
+288                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+288-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:75:17-90
+288-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:75:25-87
+289            </intent-filter>
+290        </receiver>
+291        <receiver
+291-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:78:9-88:20
+292            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+292-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:79:13-104
+293            android:directBootAware="false"
+293-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:80:13-44
+294            android:enabled="false"
+294-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:81:13-36
+295            android:exported="false" >
+295-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:82:13-37
+296            <intent-filter>
+296-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:84:13-87:29
+297                <action android:name="android.intent.action.BATTERY_OKAY" />
+297-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:85:17-77
+297-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:85:25-74
+298                <action android:name="android.intent.action.BATTERY_LOW" />
+298-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:86:17-76
+298-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:86:25-73
+299            </intent-filter>
+300        </receiver>
+301        <receiver
+301-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:89:9-99:20
+302            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+302-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:90:13-104
+303            android:directBootAware="false"
+303-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:91:13-44
+304            android:enabled="false"
+304-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:92:13-36
+305            android:exported="false" >
+305-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:93:13-37
+306            <intent-filter>
+306-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:95:13-98:29
+307                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+307-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:96:17-83
+307-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:96:25-80
+308                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+308-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:97:17-82
+308-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:97:25-79
+309            </intent-filter>
+310        </receiver>
+311        <receiver
+311-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:100:9-109:20
+312            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+312-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:101:13-103
+313            android:directBootAware="false"
+313-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:102:13-44
+314            android:enabled="false"
+314-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:103:13-36
+315            android:exported="false" >
+315-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:104:13-37
+316            <intent-filter>
+316-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:106:13-108:29
+317                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+317-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:107:17-79
+317-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:107:25-76
+318            </intent-filter>
+319        </receiver>
+320        <receiver
+320-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:110:9-121:20
+321            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+321-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:111:13-88
+322            android:directBootAware="false"
+322-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:112:13-44
+323            android:enabled="false"
+323-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:113:13-36
+324            android:exported="false" >
+324-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:114:13-37
+325            <intent-filter>
+325-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:116:13-120:29
+326                <action android:name="android.intent.action.BOOT_COMPLETED" />
+326-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+326-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+327                <action android:name="android.intent.action.TIME_SET" />
+327-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:118:17-73
+327-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:118:25-70
+328                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+328-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:119:17-81
+328-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:119:25-78
+329            </intent-filter>
+330        </receiver>
+331        <receiver
+331-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:122:9-131:20
+332            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+332-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:123:13-99
+333            android:directBootAware="false"
+333-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:124:13-44
+334            android:enabled="@bool/enable_system_alarm_service_default"
+334-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:125:13-72
+335            android:exported="false" >
+335-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:126:13-37
+336            <intent-filter>
+336-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:128:13-130:29
+337                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+337-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:129:17-98
+337-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:129:25-95
+338            </intent-filter>
+339        </receiver>
+340        <receiver
+340-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:132:9-142:20
+341            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+341-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:133:13-78
+342            android:directBootAware="false"
+342-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:134:13-44
+343            android:enabled="true"
+343-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:135:13-35
+344            android:exported="true"
+344-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:136:13-36
+345            android:permission="android.permission.DUMP" >
+345-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:137:13-57
+346            <intent-filter>
+346-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:139:13-141:29
+347                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+347-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:140:17-88
+347-->[androidx.work:work-runtime:2.7.1] C:\Users\hario\.gradle\caches\transforms-3\625dccaa20b05606224bf1c85e348f7d\transformed\work-runtime-2.7.1\AndroidManifest.xml:140:25-85
+348            </intent-filter>
+349        </receiver>
+350
+351        <service
+351-->[androidx.room:room-runtime:2.2.5] C:\Users\hario\.gradle\caches\transforms-3\b6007e2ca48543fce4b18c778ff52d67\transformed\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+352            android:name="androidx.room.MultiInstanceInvalidationService"
+352-->[androidx.room:room-runtime:2.2.5] C:\Users\hario\.gradle\caches\transforms-3\b6007e2ca48543fce4b18c778ff52d67\transformed\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+353            android:directBootAware="true"
+353-->[androidx.room:room-runtime:2.2.5] C:\Users\hario\.gradle\caches\transforms-3\b6007e2ca48543fce4b18c778ff52d67\transformed\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+354            android:exported="false" />
+354-->[androidx.room:room-runtime:2.2.5] C:\Users\hario\.gradle\caches\transforms-3\b6007e2ca48543fce4b18c778ff52d67\transformed\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+355
+356        <receiver android:name="com.transistorsoft.tsbackgroundfetch.FetchAlarmReceiver" />
+356-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:16:9-92
+356-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:16:19-89
+357
+358        <service
+358-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:18:9-21:72
+359            android:name="com.transistorsoft.tsbackgroundfetch.FetchJobService"
+359-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:19:13-80
+360            android:exported="true"
+360-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:20:13-36
+361            android:permission="android.permission.BIND_JOB_SERVICE" />
+361-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:21:13-69
+362
+363        <receiver
+363-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:23:9-30:20
+364            android:name="com.transistorsoft.tsbackgroundfetch.BootReceiver"
+364-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:24:13-77
+365            android:exported="false" >
+365-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:25:13-37
+366            <intent-filter>
+366-->[com.transistorsoft:tsbackgroundfetch:0.5.7] C:\Users\hario\.gradle\caches\transforms-3\853da60997af0f13a26434b8f81b773b\transformed\jetified-tsbackgroundfetch-0.5.7\AndroidManifest.xml:26:13-29:29
+367                <action android:name="android.intent.action.BOOT_COMPLETED" />
+367-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-79
+367-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:26:25-76
+368                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+368-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-84
+368-->[:flutter_local_notifications] C:\Users\hario\OneDrive\Desktop\assetexperiment\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-81
+369            </intent-filter>
+370        </receiver>
+371    </application>
+372
+373</manifest>
