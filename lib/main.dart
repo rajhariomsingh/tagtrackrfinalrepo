@@ -1,16 +1,15 @@
+import 'package:Jatayu/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'auth_service.dart';
 import 'signup_page.dart';
 import 'welcome_page.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -63,8 +62,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return GetMaterialApp(
       title: 'Flutter Demo',
       routes: {
-        '/signuppage': (context) => const SignUpPage(),
-        '/h': (context) => const WelcomePage(),
+        '/signuppage': (context) => SignUpPage(),
+        '/loginpage': (context) => LoginPage(),
+        '/h': (context) => WelcomePage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -73,4 +73,3 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     );
   }
 }
-

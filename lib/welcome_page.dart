@@ -9,7 +9,6 @@ import 'package:Jatayu/NfcImplement.dart';
 import 'package:Jatayu/UserProfilePage.dart';
 import 'package:Jatayu/auth_service.dart';
 
-
 import 'package:geolocator/geolocator.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -46,9 +45,8 @@ class _WelcomePageState extends State<WelcomePage> {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       _positionStream = Geolocator.getPositionStream().listen((position) async {
-
-        final collection = FirebaseFirestore.instance.collection(
-            'user_locations');
+        final collection =
+            FirebaseFirestore.instance.collection('user_locations');
         await collection.doc(user.email).update({
           'latitude': position.latitude,
           'longitude': position.longitude,
@@ -64,8 +62,8 @@ class _WelcomePageState extends State<WelcomePage> {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       final currentPosition = await Geolocator.getCurrentPosition();
-      final collection = FirebaseFirestore.instance.collection(
-          'user_locations');
+      final collection =
+          FirebaseFirestore.instance.collection('user_locations');
       await collection.doc(user.email).set({
         'latitude': currentPosition.latitude,
         'longitude': currentPosition.longitude,
@@ -80,17 +78,19 @@ class _WelcomePageState extends State<WelcomePage> {
   Future<void> _initBackgroundFetch() async {
     // Register the background fetch task with a unique task ID
     BackgroundFetch.configure(
-        BackgroundFetchConfig(
-            minimumFetchInterval: 0.001.toInt(), // Fetch interval in minutes
-            stopOnTerminate: false, // Continue running after app is terminated
-            enableHeadless: true, // Run task in headless mode
-            requiresBatteryNotLow: false, // Don't require low battery mode
-            requiresCharging: false, // Don't require charging
-            requiresStorageNotLow: false, // Don't require low storage
-            requiresDeviceIdle: false),
+            BackgroundFetchConfig(
+                minimumFetchInterval:
+                    0.001.toInt(), // Fetch interval in minutes
+                stopOnTerminate:
+                    false, // Continue running after app is terminated
+                enableHeadless: true, // Run task in headless mode
+                requiresBatteryNotLow: false, // Don't require low battery mode
+                requiresCharging: false, // Don't require charging
+                requiresStorageNotLow: false, // Don't require low storage
+                requiresDeviceIdle: false),
 
-        // Don't require idle device
-        _onBackgroundFetch)
+            // Don't require idle device
+            _onBackgroundFetch)
         .then((int status) {
       print('[BackgroundFetch] configure success: $status');
       // Set the task to complete when the app is resumed
@@ -104,8 +104,8 @@ class _WelcomePageState extends State<WelcomePage> {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null && _isInBackground) {
       final currentPosition = await Geolocator.getCurrentPosition();
-      final collection = FirebaseFirestore.instance.collection(
-          'user_locations');
+      final collection =
+          FirebaseFirestore.instance.collection('user_locations');
       await collection.doc(user.email).update({
         'latitude': currentPosition.latitude,
         'longitude': currentPosition.longitude,
@@ -114,69 +114,69 @@ class _WelcomePageState extends State<WelcomePage> {
           '[BackgroundFetch] location update success: ${currentPosition.latitude}, ${currentPosition.longitude}');
     }
     // Set the task to complete when finished
-    BackgroundFetch.finish(
-        BackgroundFetch.FETCH_RESULT_NEW_DATA.toString());
+    BackgroundFetch.finish(BackgroundFetch.FETCH_RESULT_NEW_DATA.toString());
   }
+
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
         startLocationUpdates();
         break;
       case AppLifecycleState.paused:
-           startLocationUpdates();
+        startLocationUpdates();
         break;
       default:
         break;
     }
   }
+
   void stopLocationUpdates() {
     _positionStream?.cancel();
     _positionStream = null;
   }
+
   @override
   Widget build(BuildContext context) {
-    double w=MediaQuery.of(context).size.width;
-    double h=MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-     appBar: AppBar(
-       backgroundColor: Colors.blueGrey[900],
-       elevation: 0,
-       title: Text('Welcome - ' + FirebaseAuth.instance.currentUser!.displayName!),
-       actions: [
-         Stack(
-           children: [
-             Padding(
-               padding: EdgeInsets.only(right: w * 0.09),
-               child: InkWell(
-                 onTap: () {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => UserProfilePage()),
-                   );
-                 },
-                 child: CircleAvatar(
-                   backgroundColor: Colors.white,
-                   child: Icon(
-                     Icons.person,
-                     color: Colors.black,
-                   ),
-                 ),
-               ),
-             ),
-             Positioned(
-               top: h * 0.034,
-               right: w * 0.1,
-               child: Container(),
-             ),
-           ],
-         ),
-       ],
-     ),
-
-
-
-      body:
-      Container(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900],
+        elevation: 0,
+        title: Text(
+            'Welcome - ' + FirebaseAuth.instance.currentUser!.displayName!),
+        actions: [
+          Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: w * 0.09),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserProfilePage()),
+                    );
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: h * 0.034,
+                right: w * 0.1,
+                child: Container(),
+              ),
+            ],
+          ),
+        ],
+      ),
+      body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.blueGrey[900]!, Colors.blueGrey[700]!],
@@ -186,18 +186,15 @@ class _WelcomePageState extends State<WelcomePage> {
         ),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
               Container(
-
                 width: w,
                 height: h * 0.01,
-
               ),
 
-
-              SizedBox(height: w*0.08,),
-
+              SizedBox(
+                height: w * 0.08,
+              ),
 
               // RichText(text: TextSpan(
               //
@@ -208,7 +205,6 @@ class _WelcomePageState extends State<WelcomePage> {
               //   ),
               //
               // )),
-
 
               Container(
                 width: w * 0.94,
@@ -257,20 +253,26 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           SizedBox(height: 20),
                           InkWell(
-                            onTap: () {
-                              Navigator.push(
+                            onTap: () async {
+                              await AuthService().signOut();
+                              // Navigate to the result of AuthService().handleAuthState() after sign-out
+                              Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => Create()),
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      AuthService().handleAuthState(),
+                                ),
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Text(
-                                "Start",
+                                "Log Out",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -286,10 +288,9 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
 
-
-
-
-              SizedBox(height:w*0.1,),
+              SizedBox(
+                height: w * 0.1,
+              ),
 
               Container(
                 width: w * 0.94,
@@ -338,20 +339,20 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           SizedBox(height: 20),
                           InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => NfcImplement()),
-                              );
+                            onTap: () async {
+                              await AuthService().signOut();
+                              // Navigate back to the main entry point after sign-out
+                              Navigator.pushReplacementNamed(context, '/');
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Text(
-                                "OPEN",
+                                "Log Out",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -367,10 +368,9 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
 
-              SizedBox(height:w*0.1,),
-
-
-
+              SizedBox(
+                height: w * 0.1,
+              ),
 
               Container(
                 width: w * 0.94,
@@ -388,7 +388,6 @@ class _WelcomePageState extends State<WelcomePage> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage("img/records4.png"),
-
                         ),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
@@ -422,11 +421,14 @@ class _WelcomePageState extends State<WelcomePage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => AttendanceRecordScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AttendanceRecordScreen()),
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
@@ -447,7 +449,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
               ),
-              SizedBox(height:w*0.1,),
+              SizedBox(
+                height: w * 0.1,
+              ),
 
               Container(
                 width: w * 0.94,
@@ -511,17 +515,21 @@ class _WelcomePageState extends State<WelcomePage> {
                           ),
                           SizedBox(height: 20),
                           InkWell(
-                            onTap: () {
-                              AuthService().signOut();
+                            onTap: () async {
+                              await AuthService().signOut();
+                              // Navigate to the signup page after sign-out
+                              Navigator.pushReplacementNamed(
+                                  context, '/loginpage');
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Text(
-                                "LogOut",
+                                "Log Out",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -536,15 +544,10 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
               ),
-
-
-
             ],
           ),
         ),
       ),
-
     );
   }
 }
-

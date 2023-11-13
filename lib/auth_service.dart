@@ -1,3 +1,4 @@
+import 'package:Jatayu/companyValidationPage.dart';
 import 'package:Jatayu/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,30 +7,33 @@ import 'package:Jatayu/welcome_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'login_page.dart';
 
-class AuthService{
+class AuthService {
   handleAuthState() {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
+            print('yooo');
             createUserDocInFirestore();
-            return WelcomePage();
+            print('yess');
+            return CompanyValidationPage();
           } else {
-            return const LoginPage();
+            print('nooo');
+            return LoginPage();
           }
         });
   }
 
   signInWithGoogle() async {
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(
-        scopes: <String>["email"]).signIn();
+    final GoogleSignInAccount? googleUser =
+        await GoogleSignIn(scopes: <String>["email"]).signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -39,28 +43,24 @@ class AuthService{
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
-
-
   }
-   createUserDocInFirestore() async {
+
+  createUserDocInFirestore() async {
     User? currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null) {
-      DocumentReference userDocRef = FirebaseFirestore.instance
-          .collection("users")
-          .doc(currentUser.email);
+      DocumentReference userDocRef =
+          FirebaseFirestore.instance.collection("users").doc(currentUser.email);
       await userDocRef.set({
         "email": currentUser.email,
         "name": currentUser.displayName ?? "",
         "photoUrl": currentUser.photoURL ?? "",
-        "status":"online",
+        "status": "online",
       });
     }
   }
 
-  signOut() async{
+  signOut() async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
-
-
   }
 }
