@@ -12,6 +12,7 @@ import 'package:ndef/ndef.dart' as ndef;
 import 'attendencerecordscreen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+final user = FirebaseAuth.instance.currentUser;
 
 class NfcImplement extends StatefulWidget {
   const NfcImplement({Key? key}) : super(key: key);
@@ -39,15 +40,14 @@ class _NfcImplementState extends State<NfcImplement> {
     _stopNfcListening();
     super.dispose();
   }
-  bool _showNfcMessage = true;
 
+  bool _showNfcMessage = true;
 
   void _hideNfcMessage() {
     setState(() {
       _showNfcMessage = false;
     });
   }
-
 
   Future<void> requestBackgroundLocationPermission() async {
     final status = await Permission.locationAlways.request();
@@ -56,7 +56,8 @@ class _NfcImplementState extends State<NfcImplement> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Location permission denied'),
-          content: Text('Please grant location permission in the app settings to use this feature.'),
+          content: Text(
+              'Please grant location permission in the app settings to use this feature.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -65,12 +66,12 @@ class _NfcImplementState extends State<NfcImplement> {
           ],
         ),
       );
-    }else if (status == PermissionStatus.granted) {
-      _hasCheckedIn =true;
+    } else if (status == PermissionStatus.granted) {
+      _hasCheckedIn = true;
     }
   }
 
-  void _startNfcListening() async{
+  void _startNfcListening() async {
     NfcManager.instance.startSession(
       onDiscovered: (NfcTag tag) async {
         try {
@@ -84,59 +85,76 @@ class _NfcImplementState extends State<NfcImplement> {
           setState(() {
             _message = payload;
             _key = payload;
-
           });
 
           if (_message == verify) {
             await requestBackgroundLocationPermission();
-            if(_hasCheckedIn==true){
-            String currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
-            String uid = FirebaseAuth.instance.currentUser!.uid;
-            DocumentReference attendanceRef = FirebaseFirestore.instance.collection('attendence').doc(currentDate);
-            attendanceRef.get().then((docSnapshot) {
-              if (docSnapshot.exists) {
-                Map<String, dynamic>? data = docSnapshot.data() as Map<String, dynamic>?;
-                if (data != null && data[uid] != null) {
-                  // User has already checked-in, record check-out time
-                  data[uid] = {
-                    'checkInTime': data[uid]['checkInTime'],
-                    'checkOutTime': DateFormat('HH:mm:ss').format(DateTime.now()),
-                    'name':FirebaseAuth.instance.currentUser!.displayName!,
-                    'photoUrl':FirebaseAuth.instance.currentUser!.photoURL!,
-                    'email':FirebaseAuth.instance.currentUser!.email,
-                  };
-
+            if (_hasCheckedIn == true) {
+              String currentDate =
+                  DateFormat('yyyy-MM-dd').format(DateTime.now());
+              String uid = FirebaseAuth.instance.currentUser!.uid;
+              String company = (await FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(user!.email)
+                      .get())
+                  .get('company');
+              DocumentReference attendanceRef = FirebaseFirestore.instance
+                  .collection('attendence')
+                  .doc('data')
+                  .collection(company)
+                  .doc(currentDate);
+              attendanceRef.get().then((docSnapshot) {
+                if (docSnapshot.exists) {
+                  Map<String, dynamic>? data =
+                      docSnapshot.data() as Map<String, dynamic>?;
+                  if (data != null && data[uid] != null) {
+                    // User has already checked-in, record check-out time
+                    data[uid] = {
+                      'checkInTime': data[uid]['checkInTime'],
+                      'checkOutTime':
+                          DateFormat('HH:mm:ss').format(DateTime.now()),
+                      'name': FirebaseAuth.instance.currentUser!.displayName!,
+                      'photoUrl': FirebaseAuth.instance.currentUser!.photoURL!,
+                      'email': FirebaseAuth.instance.currentUser!.email,
+                    };
+                  } else {
+                    // User has not checked-in yet, record check-in time
+                    data ??= {};
+                    data[uid] = {
+                      'checkInTime':
+                          DateFormat('HH:mm:ss').format(DateTime.now()),
+                      'checkOutTime': 'nil',
+                      'name': FirebaseAuth.instance.currentUser!.displayName!,
+                      'photoUrl': FirebaseAuth.instance.currentUser!.photoURL!,
+                      'email': FirebaseAuth.instance.currentUser!.email,
+                    };
+                  }
+                  attendanceRef
+                      .set(data, SetOptions(merge: true))
+                      .then((value) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => AttendanceRecordScreen()));
+                  });
                 } else {
                   // User has not checked-in yet, record check-in time
-                  data ??= {};
-                  data[uid] = {
-                    'checkInTime': DateFormat('HH:mm:ss').format(DateTime.now()),
-                    'checkOutTime': 'nil',
-                    'name':FirebaseAuth.instance.currentUser!.displayName!,
-                    'photoUrl':FirebaseAuth.instance.currentUser!.photoURL!,
-                    'email':FirebaseAuth.instance.currentUser!.email,
+                  Map<String, dynamic> data = {
+                    uid: {
+                      'checkInTime':
+                          DateFormat('HH:mm:ss').format(DateTime.now()),
+                      'checkOutTime': 'nil',
+                      'name': FirebaseAuth.instance.currentUser!.displayName!,
+                      'photoUrl': FirebaseAuth.instance.currentUser!.photoURL!,
+                      'email': FirebaseAuth.instance.currentUser!.email,
+                    },
                   };
+                  attendanceRef.set(data).then((value) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => AttendanceRecordScreen()));
+                  });
                 }
-                attendanceRef.set(data, SetOptions(merge: true)).then((value) {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => AttendanceRecordScreen()));
-                });
-              } else {
-                // User has not checked-in yet, record check-in time
-                Map<String, dynamic> data = {
-                  uid: {
-                    'checkInTime': DateFormat('HH:mm:ss').format(DateTime.now()),
-                    'checkOutTime': 'nil',
-                    'name':FirebaseAuth.instance.currentUser!.displayName!,
-                    'photoUrl':FirebaseAuth.instance.currentUser!.photoURL!,
-                    'email':FirebaseAuth.instance.currentUser!.email,
-                  },
-                };
-                attendanceRef.set(data).then((value) {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => AttendanceRecordScreen()));
-                });
-              }
-            });
-          }}
+              });
+            }
+          }
         } catch (e) {
           print(e);
         }
@@ -146,16 +164,14 @@ class _NfcImplementState extends State<NfcImplement> {
     });
   }
 
-
   void _stopNfcListening() {
     _streamSubscription?.cancel();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    double w=MediaQuery.of(context).size.width;
-    double h=MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text('NFC Record Management'),
@@ -174,7 +190,8 @@ class _NfcImplementState extends State<NfcImplement> {
         ),
         child: Center(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: w * 0.1, vertical: h * 0.05),
+            padding:
+                EdgeInsets.symmetric(horizontal: w * 0.1, vertical: h * 0.05),
             height: h * 0.4,
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.7),
@@ -185,8 +202,8 @@ class _NfcImplementState extends State<NfcImplement> {
               children: [
                 Image.asset(
                   'img/jatayu3.png',
-                  height: h*0.26,
-                  width: w*0.9,
+                  height: h * 0.26,
+                  width: w * 0.9,
                 ),
                 SizedBox(height: h * 0.00001),
                 Text(
@@ -201,13 +218,13 @@ class _NfcImplementState extends State<NfcImplement> {
       // Display the pop-up message if _showNfcMessage is true
       floatingActionButton: _showNfcMessage
           ? FloatingActionButton.extended(
-        onPressed: () {
-          _hideNfcMessage();
-        },
-        label: Text('Please Turn On NFC'),
-        icon: Icon(Icons.warning),
-        backgroundColor: Colors.red,
-      )
+              onPressed: () {
+                _hideNfcMessage();
+              },
+              label: Text('Please Turn On NFC'),
+              icon: Icon(Icons.warning),
+              backgroundColor: Colors.red,
+            )
           : null,
     );
   }

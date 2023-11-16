@@ -47,7 +47,17 @@ class _WelcomePageState extends State<WelcomePage> {
       _positionStream = Geolocator.getPositionStream().listen((position) async {
         final collection =
             FirebaseFirestore.instance.collection('user_locations');
-        await collection.doc(user.email).update({
+        String company = (await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.email)
+                .get())
+            .get('company');
+
+        await collection
+            .doc("data")
+            .collection(company)
+            .doc(user.email)
+            .update({
           'latitude': position.latitude,
           'longitude': position.longitude,
         });
@@ -64,7 +74,13 @@ class _WelcomePageState extends State<WelcomePage> {
       final currentPosition = await Geolocator.getCurrentPosition();
       final collection =
           FirebaseFirestore.instance.collection('user_locations');
-      await collection.doc(user.email).set({
+      String company = (await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.email)
+              .get())
+          .get('company');
+
+      await collection.doc("data").collection(company).doc(user.email).set({
         'latitude': currentPosition.latitude,
         'longitude': currentPosition.longitude,
         'photoUrl': user.photoURL,
@@ -106,7 +122,13 @@ class _WelcomePageState extends State<WelcomePage> {
       final currentPosition = await Geolocator.getCurrentPosition();
       final collection =
           FirebaseFirestore.instance.collection('user_locations');
-      await collection.doc(user.email).update({
+      String company = (await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.email)
+              .get())
+          .get('company');
+
+      await collection.doc("data").collection(company).doc(user.email).update({
         'latitude': currentPosition.latitude,
         'longitude': currentPosition.longitude,
       });
@@ -254,14 +276,11 @@ class _WelcomePageState extends State<WelcomePage> {
                           SizedBox(height: 20),
                           InkWell(
                             onTap: () async {
-                              await AuthService().signOut();
                               // Navigate to the result of AuthService().handleAuthState() after sign-out
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      AuthService().handleAuthState(),
-                                ),
+                                    builder: (context) => Create()),
                               );
                             },
                             child: Container(
@@ -272,7 +291,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Text(
-                                "Log Out",
+                                "Track",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -340,9 +359,11 @@ class _WelcomePageState extends State<WelcomePage> {
                           SizedBox(height: 20),
                           InkWell(
                             onTap: () async {
-                              await AuthService().signOut();
-                              // Navigate back to the main entry point after sign-out
-                              Navigator.pushReplacementNamed(context, '/');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NfcImplement()),
+                              );
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -352,7 +373,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Text(
-                                "Log Out",
+                                "Record",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,

@@ -86,6 +86,7 @@ class _CompanyValidationPageState extends State<CompanyValidationPage> {
             List<String>.from(companySnapshot.data()?['employee'] ?? []);
 
         if (employees.contains(userEmail)) {
+          await createUserDocInFirestore();
           // User is registered with the company, navigate to WelcomePage
           Navigator.push(
             context,
@@ -120,5 +121,21 @@ class _CompanyValidationPageState extends State<CompanyValidationPage> {
         );
       },
     );
+  }
+
+  createUserDocInFirestore() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      DocumentReference userDocRef =
+          FirebaseFirestore.instance.collection("users").doc(currentUser.email);
+      await userDocRef.set({
+        "email": currentUser.email,
+        "name": currentUser.displayName ?? "",
+        "photoUrl": currentUser.photoURL ?? "",
+        "status": "online",
+        "company": _companyIdController.text.trim(),
+        "uid": currentUser.uid,
+      });
+    }
   }
 }

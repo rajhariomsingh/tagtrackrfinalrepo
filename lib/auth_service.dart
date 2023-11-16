@@ -16,7 +16,7 @@ class AuthService {
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
             print('yooo');
-            createUserDocInFirestore();
+            // createUserDocInFirestore();
             print('yess');
             return CompanyValidationPage();
           } else {
@@ -55,6 +55,8 @@ class AuthService {
         "name": currentUser.displayName ?? "",
         "photoUrl": currentUser.photoURL ?? "",
         "status": "online",
+        "company": "",
+        "uid": currentUser.uid,
       });
     }
   }

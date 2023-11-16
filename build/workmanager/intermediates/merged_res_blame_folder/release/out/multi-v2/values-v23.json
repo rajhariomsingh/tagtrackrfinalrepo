@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "be.tramckrijte.workmanager-merged_res-12:/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\hario\\.gradle\\caches\\transforms-3\\625dccaa20b05606224bf1c85e348f7d\\transformed\\work-runtime-2.7.1\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "be.tramckrijte.workmanager-mergeReleaseResources-10:/values-v23/values-v23.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\hario\\.gradle\\caches\\transforms-3\\625dccaa20b05606224bf1c85e348f7d\\transformed\\work-runtime-2.7.1\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                }
+            ]
+        }
+    ]
+}

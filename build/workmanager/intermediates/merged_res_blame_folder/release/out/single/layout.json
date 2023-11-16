@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/notification_action_tombstone.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/notification_template_icon_group.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/notification_template_part_time.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/custom_dialog.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/notification_template_part_chronometer.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "be.tramckrijte.workmanager-merged_res-12:/layout/notification_action.xml",
+        "source": "be.tramckrijte.workmanager-core-1.6.0-3:/layout/notification_action.xml"
+    }
+]

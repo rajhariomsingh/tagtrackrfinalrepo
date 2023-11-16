@@ -10,44 +10,44 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class Create extends StatefulWidget {
   const Create({Key? key}) : super(key: key);
 
   @override
   State<Create> createState() => _CreateState();
-
 }
 
 class _CreateState extends State<Create> {
-  DateTime? lastAlertTime ;
+  DateTime? lastAlertTime;
   StreamSubscription<Position>? _positionStream;
   List<Marker> markers = [];
-   List<String>  addedUser = [];
- int x=1;
+  List<String> addedUser = [];
+  int x = 1;
   Position? _position;
   String userInput = '';
-  String candidate='';
-  double longi=0;
-  double lati=0;
-  double longitude=0;
-  double latitude=0;
-  double ?latitudec;
-  double ?longitudec;
-  int i=0,j=0;
+  String candidate = '';
+  double longi = 0;
+  double lati = 0;
+  double longitude = 0;
+  double latitude = 0;
+  double? latitudec;
+  double? longitudec;
+  int i = 0, j = 0;
   bool isFirstMarker = true;
   String? photoUrl;
   List<LatLng> polygonPoints = [];
+  String company = '9953';
 
-  double getDistanceFromLatLonInKm(double lat1, double lon1, double lat2, double lon2) {
+  double getDistanceFromLatLonInKm(
+      double lat1, double lon1, double lat2, double lon2) {
     var R = 6371; // Radius of the earth in km
-    var dLat = _deg2rad(lat2 - lat1);  // deg2rad below
+    var dLat = _deg2rad(lat2 - lat1); // deg2rad below
     var dLon = _deg2rad(lon2 - lon1);
-    var a =
-        sin(dLat / 2) * sin(dLat / 2) +
-            cos(_deg2rad(lat1)) * cos(_deg2rad(lat2)) *
-                sin(dLon / 2) *
-                sin(dLon / 2);
+    var a = sin(dLat / 2) * sin(dLat / 2) +
+        cos(_deg2rad(lat1)) *
+            cos(_deg2rad(lat2)) *
+            sin(dLon / 2) *
+            sin(dLon / 2);
     var c = 2 * atan2(sqrt(a), sqrt(1 - a));
     var d = R * c; // Distance in km
     return d;
@@ -57,33 +57,49 @@ class _CreateState extends State<Create> {
     return deg * (pi / 180);
   }
 
-
-
   @override
   void initState() {
     super.initState();
+    final user = FirebaseAuth.instance.currentUser;
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.email)
+        .get()
+        .then((snapshot) {
+      setState(() {
+        company = snapshot.get('company');
+      });
+    });
     printUserLocations();
     _getCurrentLocation();
 
     startLocationUpdates();
-
   }
+
   @override
   Future<void> _getCurrentLocation() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       final currentPosition = await Geolocator.getCurrentPosition();
 
-      final collection = FirebaseFirestore.instance.collection(
-          'user_locations');
+      String company = (await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.email)
+              .get())
+          .get('company');
+
+      final collection = FirebaseFirestore.instance
+          .collection('user_locations')
+          .doc('data')
+          .collection(company);
       await collection.doc(user.email).set({
         'latitude': currentPosition.latitude,
         'longitude': currentPosition.longitude,
         'photoUrl': user.photoURL,
         'email': user.email,
       });
-      latitudec= currentPosition.latitude;
-      longitudec= currentPosition.longitude;
+      latitudec = currentPosition.latitude;
+      longitudec = currentPosition.longitude;
     }
   }
 
@@ -95,25 +111,46 @@ class _CreateState extends State<Create> {
     if (user != null) {
       locationSubscription ??=
           Geolocator.getPositionStream().listen((position) async {
-            final collection = FirebaseFirestore.instance.collection(
-                'user_locations');
-            await collection.doc(user.email).update({
-              'latitude': position.latitude,
-              'longitude': position.longitude,
-            });
-          });
+        String company = (await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.email)
+                .get())
+            .get('company');
+
+        final collection = FirebaseFirestore.instance
+            .collection('user_locations')
+            .doc('data')
+            .collection(company);
+        await collection.doc(user.email).update({
+          'latitude': position.latitude,
+          'longitude': position.longitude,
+        });
+      });
     }
   }
 
 // Retrieve all users' location data from Firestore.
   Stream<List<QueryDocumentSnapshot>> getUsersLocations() {
-    final collection = FirebaseFirestore.instance.collection('user_locations');
+    final collection = FirebaseFirestore.instance
+        .collection('user_locations')
+        .doc('data')
+        .collection(company);
     return collection.snapshots().map((snapshot) => snapshot.docs);
   }
-  @override
 
-  void printUserLocations() {
-    final collection = FirebaseFirestore.instance.collection('user_locations');
+  @override
+  Future<void> printUserLocations() async {
+    final user = FirebaseAuth.instance.currentUser;
+    String company = (await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user!.email)
+            .get())
+        .get('company');
+
+    final collection = FirebaseFirestore.instance
+        .collection('user_locations')
+        .doc('data')
+        .collection(company);
     getUsersLocations().listen((List<QueryDocumentSnapshot> snapshot) {
       markers.clear();
 
@@ -128,20 +165,16 @@ class _CreateState extends State<Create> {
           final user = FirebaseAuth.instance.currentUser!;
           final photoUrl = data?['photoUrl'];
 
-
           // Add a new marker with the updated location data
           markers.add(Marker(
             point: userLocation,
             width: 30.0,
             height: 30.0,
-
             builder: (ctx) => Container(
               child: CircleAvatar(
                 backgroundImage: NetworkImage(photoUrl!),
               ),
             ),
-
-
           ));
           print('User ${document.id} location: $latitude, $longitude');
         }
@@ -150,8 +183,13 @@ class _CreateState extends State<Create> {
       // Add the current user marker with a red color
     });
   }
-  Future<DocumentSnapshot<Map<String, dynamic>>?> getUserDocFromEmail(String email) async {
-    final userQuery = await FirebaseFirestore.instance.collection('users').where('email', isEqualTo: email).get();
+
+  Future<DocumentSnapshot<Map<String, dynamic>>?> getUserDocFromEmail(
+      String email) async {
+    final userQuery = await FirebaseFirestore.instance
+        .collection('users')
+        .where('email', isEqualTo: email)
+        .get();
     if (userQuery.docs.isNotEmpty) {
       final userDocRef = userQuery.docs.first.reference;
       final userDocSnapshot = await userDocRef.get();
@@ -159,8 +197,6 @@ class _CreateState extends State<Create> {
     }
     return null;
   }
-
-
 
   @override
   void dispose() {
@@ -173,11 +209,9 @@ class _CreateState extends State<Create> {
 
   @override
   Widget build(BuildContext context) {
-    double w=MediaQuery.of(context).size.width;
-    double h=MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     final mapController = MapController();
-
-
 
     return Scaffold(
       appBar: AppBar(
@@ -185,14 +219,10 @@ class _CreateState extends State<Create> {
         backgroundColor: Colors.blueGrey[700],
         elevation: 0,
       ),
-
       body: Container(
         color: Colors.blueGrey[700],
         child: Column(
-
           children: [
-
-
             SizedBox(height: w * 0.0001),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
@@ -282,14 +312,24 @@ class _CreateState extends State<Create> {
                                       return Container(); // skip empty document IDs
                                     }
                                     return FutureBuilder<DocumentSnapshot>(
-                                      future: FirebaseFirestore.instance.collection('users').doc(userDocId).get(),
-                                      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-                                        if (snapshot.connectionState == ConnectionState.done) {
+                                      future: FirebaseFirestore.instance
+                                          .collection('users')
+                                          .doc(userDocId)
+                                          .get(),
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot<DocumentSnapshot>
+                                              snapshot) {
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.done) {
                                           if (snapshot.hasData) {
-                                            final name = snapshot.data!.get('name');
-                                            final photoUrl = snapshot.data!.get('photoUrl');
-                                            final status = snapshot.data!.get('status');
-                                            final isOnline = status == 'online'; // check if status is 'online'
+                                            final name =
+                                                snapshot.data!.get('name');
+                                            final photoUrl =
+                                                snapshot.data!.get('photoUrl');
+                                            final status =
+                                                snapshot.data!.get('status');
+                                            final isOnline = status ==
+                                                'online'; // check if status is 'online'
                                             return Row(
                                               children: [
                                                 SizedBox(width: 10),
@@ -297,14 +337,19 @@ class _CreateState extends State<Create> {
                                                   width: 10,
                                                   height: 10,
                                                   decoration: BoxDecoration(
-                                                    color: isOnline ? Colors.green : Colors.red, // set color based on status
-                                                    borderRadius: BorderRadius.circular(5),
+                                                    color: isOnline
+                                                        ? Colors.green
+                                                        : Colors
+                                                            .red, // set color based on status
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
                                                   ),
                                                 ),
-
                                                 SizedBox(width: 10),
                                                 CircleAvatar(
-                                                  backgroundImage: NetworkImage(photoUrl!),
+                                                  backgroundImage:
+                                                      NetworkImage(photoUrl!),
                                                   maxRadius: 20,
                                                 ),
                                                 SizedBox(width: 10),
@@ -336,28 +381,27 @@ class _CreateState extends State<Create> {
                                     );
                                   },
                                 ),
-
                               ),
-
-
                             );
                           },
                         );
                       },
-                    child: Image.asset(
-                      "img/locpin.png",
-                      height: 40,
-                      width: 40,
+                      child: Image.asset(
+                        "img/locpin.png",
+                        height: 40,
+                        width: 40,
+                      ),
                     ),
                   ),
-            ),
                   Center(
                     child: TextButton(
                       onPressed: () {
                         if (i == 0) {
-                          addedUser.add(FirebaseAuth.instance.currentUser!.email!);
-                          i++;
-                        };
+                          addedUser
+                              .add(FirebaseAuth.instance.currentUser!.email!);
+                          i = 1;
+                        }
+                        ;
                         addedUser.add(userInput);
                         print(userInput);
                         _textController.clear();
@@ -386,7 +430,8 @@ class _CreateState extends State<Create> {
                               content: TextField(
                                 keyboardType: TextInputType.number,
                                 onChanged: (value) {
-                                  j = int.parse(value); // Store the user input as an integer in j
+                                  j = int.parse(
+                                      value); // Store the user input as an integer in j
                                 },
                               ),
                               actions: <Widget>[
@@ -406,90 +451,98 @@ class _CreateState extends State<Create> {
                 ],
               ),
             ),
-            SizedBox(height: w*0.02,),
+            SizedBox(
+              height: w * 0.02,
+            ),
             Container(
-
               child: Expanded(
                 child: FlutterMap(
-                    options: MapOptions(
-                    center: LatLng(latitudec ?? 28.675091600858153, longitudec ?? 77.50238807782577),
-                     zoom: 14,
-                     onPositionChanged: (MapPosition position, bool hasGesture) {
-    // Check if any markers are outside the circle
-                       // Create a variable to store the time of the last alert box display.
+                  options: MapOptions(
+                    center: LatLng(latitudec ?? 28.675091600858153,
+                        longitudec ?? 77.50238807782577),
+                    zoom: 14,
+                    onPositionChanged: (MapPosition position, bool hasGesture) {
+                      // Check if any markers are outside the circle
+                      // Create a variable to store the time of the last alert box display.
 
-
-
-
-                       if (j > 0) {
-                         markers.forEach((marker) {
-                           if (getDistanceFromLatLonInKm(marker.point.latitude, marker.point.longitude, latitudec ?? 28.675091600858153, longitudec ?? 77.50238807782577) > j) {
-                             // Check if enough time has passed since the last alert box display.
-                             if (lastAlertTime == null || DateTime.now().difference(lastAlertTime!) > Duration(minutes: 30)) {
-                               // Marker is outside the circle and enough time has passed since the last alert box display, show a popup.
-                               showDialog(
-                                 context: context,
-                                 builder: (BuildContext context) {
-                                   return AlertDialog(
-                                     title: Text('Marker outside Area'),
-                                     content: Text('A Candidate has moved outside the Marked Area.'),
-                                     actions: [
-                                       TextButton(
-                                         onPressed: () => Navigator.pop(context),
-                                         child: Text('OK'),
-                                       ),
-                                     ],
-                                   );
-                                 },
-                               );
-                               // Update the variable with the current time.
-                               lastAlertTime = DateTime.now();
-                             }
-                           }
-                         });
-                       }
-
-
-                     },
+                      if (j > 0) {
+                        markers.forEach((marker) {
+                          if (getDistanceFromLatLonInKm(
+                                  marker.point.latitude,
+                                  marker.point.longitude,
+                                  latitudec ?? 28.675091600858153,
+                                  longitudec ?? 77.50238807782577) >
+                              j) {
+                            // Check if enough time has passed since the last alert box display.
+                            if (lastAlertTime == null ||
+                                DateTime.now().difference(lastAlertTime!) >
+                                    Duration(minutes: 30)) {
+                              // Marker is outside the circle and enough time has passed since the last alert box display, show a popup.
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Marker outside Area'),
+                                    content: Text(
+                                        'A Candidate has moved outside the Marked Area.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              // Update the variable with the current time.
+                              lastAlertTime = DateTime.now();
+                            }
+                          }
+                        });
+                      }
+                    },
                   ),
-                     nonRotatedChildren: [
-                     AttributionWidget.defaultWidget(
-                 source: 'OpenStreetMap contributors',
-                       onSourceTapped: null,
-                  ),
+                  nonRotatedChildren: [
+                    AttributionWidget.defaultWidget(
+                      source: 'OpenStreetMap contributors',
+                      onSourceTapped: null,
+                    ),
                   ],
-                 children: [
-                TileLayer(
-                 urlTemplate: 'https://api.mapbox.com/styles/v1/hariomsinghraj/clg54anum000h01qx4521uoyk/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiaGFyaW9tc2luZ2hyYWoiLCJhIjoiY2xmdGF4cWtlMGVoZzNqbDJic3lqYjNtZiJ9.jgKZjfUi9fhryc2jxHadwA',
-                 userAgentPackageName: 'com.example.app',
-                additionalOptions: {
-                 'accessToken':'pk.eyJ1IjoiaGFyaW9tc2luZ2hyYWoiLCJhIjoiY2xmdGF4cWtlMGVoZzNqbDJic3lqYjNtZiJ9.jgKZjfUi9fhryc2jxHadwA',
-                  'id': 'mapbox.mapbox-streets-v8',
-                 },
-                 ),
-                MarkerLayer(
-                markers: markers,
+                  children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://api.mapbox.com/styles/v1/hariomsinghraj/clg54anum000h01qx4521uoyk/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiaGFyaW9tc2luZ2hyYWoiLCJhIjoiY2xmdGF4cWtlMGVoZzNqbDJic3lqYjNtZiJ9.jgKZjfUi9fhryc2jxHadwA',
+                      userAgentPackageName: 'com.example.app',
+                      additionalOptions: {
+                        'accessToken':
+                            'pk.eyJ1IjoiaGFyaW9tc2luZ2hyYWoiLCJhIjoiY2xmdGF4cWtlMGVoZzNqbDJic3lqYjNtZiJ9.jgKZjfUi9fhryc2jxHadwA',
+                        'id': 'mapbox.mapbox-streets-v8',
+                      },
+                    ),
+                    MarkerLayer(
+                      markers: markers,
+                    ),
+                    CircleLayer(
+                      circles: [
+                        CircleMarker(
+                          point: LatLng(latitudec ?? 28.675091600858153,
+                              longitudec ?? 77.50238807782577),
+                          color: Colors.red.withOpacity(0.5),
+                          borderStrokeWidth: 2,
+                          radius: j * 1000, // Convert kilometer value to meters
+                          useRadiusInMeter:
+                              true, // Set to true to keep circle size fixed on zoom
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                CircleLayer(
-                 circles: [
-                CircleMarker(
-                point: LatLng(latitudec ?? 28.675091600858153, longitudec ?? 77.50238807782577),
-                 color: Colors.red.withOpacity(0.5),
-                borderStrokeWidth: 2,
-                radius: j * 1000, // Convert kilometer value to meters
-                useRadiusInMeter: true, // Set to true to keep circle size fixed on zoom
-                ),
-               ],
               ),
-              ],
-              ),
-          ),
             ),
-            SizedBox(height:h*0.001),
+            SizedBox(height: h * 0.001),
           ],
         ),
       ),
-
     );
   }
 }

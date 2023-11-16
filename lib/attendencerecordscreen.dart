@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:Jatayu/ChatPage1.dart';
 
+final user = FirebaseAuth.instance.currentUser;
+
 class AttendanceRecordScreen extends StatefulWidget {
   const AttendanceRecordScreen({Key? key}) : super(key: key);
 
@@ -16,9 +18,19 @@ class AttendanceRecordScreen extends StatefulWidget {
 class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
   late DateTime selectedDate;
   late String uid;
-  int chatid=0;
+  String company = "9953";
+  int chatid = 0;
   @override
   void initState() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.email)
+        .get()
+        .then((snapshot) {
+      setState(() {
+        company = snapshot.get('company');
+      });
+    });
     super.initState();
     selectedDate = DateTime.now();
     uid = FirebaseAuth.instance.currentUser!.uid;
@@ -40,8 +52,16 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
 
   Future<DocumentReference> _getAttendanceDocument(DateTime date) async {
     final String formattedDate = DateFormat('yyyy-MM-dd').format(date);
-    return FirebaseFirestore.instance.collection('attendance').doc(
-        formattedDate);
+    // String company = (await FirebaseFirestore.instance
+    //         .collection('users')
+    //         .doc(user!.email)
+    //         .get())
+    //     .get('company');
+    return FirebaseFirestore.instance
+        .collection('attendance')
+        .doc('data')
+        .collection(company)
+        .doc(formattedDate);
   }
 
   Future<Map<String, dynamic>?> _getAttendanceData(DateTime date) async {
@@ -65,9 +85,8 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
         });
       } else {
 // Update existing attendance document with check-in time
-        final Map<String, dynamic> attendanceData = docSnapshot.data() as Map<
-            String,
-            dynamic>;
+        final Map<String, dynamic> attendanceData =
+            docSnapshot.data() as Map<String, dynamic>;
         if (attendanceData.containsKey(uid)) {
 // User has already checked-in for the day, don't do anything
           return;
@@ -90,9 +109,8 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
 // User hasn't checked-in for the day, can't check-out
         return;
       }
-      final Map<String, dynamic> attendanceData = docSnapshot.data() as Map<
-          String,
-          dynamic>;
+      final Map<String, dynamic> attendanceData =
+          docSnapshot.data() as Map<String, dynamic>;
       if (!attendanceData.containsKey(uid)) {
 // User hasn't checked-in for the day, can't check-out
         return;
@@ -109,7 +127,7 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Records   '+ "("+formattedDate+")"),
+        title: Text('Records   ' + "(" + formattedDate + ")"),
         backgroundColor: Colors.blueGrey[900],
         elevation: 0,
       ),
@@ -122,8 +140,14 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
           ),
         ),
         child: StreamBuilder<DocumentSnapshot>(
-          stream: FirebaseFirestore.instance.collection('attendence').doc(formattedDate).snapshots(),
-          builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          stream: FirebaseFirestore.instance
+              .collection('attendence')
+              .doc('data')
+              .collection(company)
+              .doc(formattedDate)
+              .snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(),
@@ -133,7 +157,8 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                 child: Text('Error: ${snapshot.error}'),
               );
             } else if (snapshot.hasData && snapshot.data!.exists) {
-              Map<String, dynamic> attendanceData = snapshot.data!.data() as Map<String, dynamic>;
+              Map<String, dynamic> attendanceData =
+                  snapshot.data!.data() as Map<String, dynamic>;
               return ListView.builder(
                 itemCount: attendanceData.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -141,10 +166,13 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                   String? checkInTime = attendanceData[userId]['checkInTime'];
                   String? checkOutTime = attendanceData[userId]['checkOutTime'];
                   String name = attendanceData[userId]['name'];
-                  String photoUrl = attendanceData[userId]['photoUrl']; // replace with actual URL to user photo
+                  String photoUrl = attendanceData[userId]
+                      ['photoUrl']; // replace with actual URL to user photo
 
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.025, vertical: MediaQuery.of(context).size.height * 0.01),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.025,
+                        vertical: MediaQuery.of(context).size.height * 0.01),
                     height: MediaQuery.of(context).size.height * 0.18,
                     width: MediaQuery.of(context).size.width * 0.95,
                     decoration: BoxDecoration(
@@ -156,7 +184,8 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.12,
                           width: MediaQuery.of(context).size.width * 0.28,
-                          margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+                          margin: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width * 0.02),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15.0),
@@ -169,7 +198,9 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03),
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -183,7 +214,9 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01),
                                 Column(
                                   children: [
                                     Text(
@@ -193,9 +226,11 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                                         fontSize: 14.0,
                                       ),
                                       textAlign: TextAlign.left,
-
                                     ),
-                                    SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+                                    SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.005),
                                     Text(
                                       'Check-out time: ${checkOutTime ?? 'N/A'}',
                                       style: TextStyle(
@@ -213,12 +248,8 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                       ],
                     ),
                   );
-
-
                 },
               );
-
-
             } else {
               return Center(
                 child: Text('No attendance record found for $formattedDate.'),
@@ -227,8 +258,6 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
           },
         ),
       ),
-
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
@@ -239,26 +268,25 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
                 content: TextField(
                   keyboardType: TextInputType.number,
                   onChanged: (value) {
-                    chatid = int.parse(value); // Store the user input as an integer in j
+                    chatid = int.parse(
+                        value); // Store the user input as an integer in j
                   },
                 ),
                 actions: <Widget>[
                   TextButton(
                     child: Text('OK'),
                     onPressed: () {
-                      if(chatid==9953) {
+                      if (chatid == 9953) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => ChatPage()),
                         );
-                      }
-                      else if(chatid==1) {
+                      } else if (chatid == 1) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => ChatPage1()),
                         );
-                      }
-                      else{
+                      } else {
                         Navigator.of(context).pop();
                       }
                     },
@@ -267,9 +295,7 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
               );
             },
           );
-
         },
-
         backgroundColor: Colors.blueGrey[900],
         child: Icon(Icons.chat),
       ),
@@ -281,19 +307,15 @@ class _AttendanceRecordScreenState extends State<AttendanceRecordScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             IconButton(
               icon: Icon(Icons.date_range),
               onPressed: () => _selectDate(context),
               iconSize: 40,
-
-
               color: Colors.white,
             ),
           ],
         ),
       ),
-
     );
   }
 }
